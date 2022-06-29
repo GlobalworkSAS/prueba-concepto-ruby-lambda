@@ -24,16 +24,16 @@ Estos comandos se probaron en una mac con procesador Intel. En un procesador M1 
 ## Si es la primera vez:
 
 ### Crear el repositorio
-aws ecr create-repository --repository-name prueba --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+`aws ecr create-repository --repository-name prueba --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE`
 
 ### Loguearse - En el paso anterior salió una URL, reemplazarla en el param --pasword-stdin
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXX.dkr.ecr.us-east-1.amazonaws.com/prueba
+`aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXX.dkr.ecr.us-east-1.amazonaws.com/prueba`
 
 ### Taguear la versión (Cada vez que se haga un cambio en el código)
-docker tag prueba:latest XXX.dkr.ecr.us-east-1.amazonaws.com/prueba:latest
+`docker tag prueba:latest XXX.dkr.ecr.us-east-1.amazonaws.com/prueba:latest`
 
 ### Push. Cada vez
-docker push XXX.dkr.ecr.us-east-1.amazonaws.com/prueba:latest
+`docker push XXX.dkr.ecr.us-east-1.amazonaws.com/prueba:latest`
 
 ### Asignar una nueva imagen al lambda
 Hay que ir al dashboard de Amazon, crear una lambda (O ir a la que ya esté creada) e indicarle que use la nueva versión de la imagen de Docker que subimos en el paso anterior
