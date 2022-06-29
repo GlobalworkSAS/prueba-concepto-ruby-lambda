@@ -48,7 +48,7 @@ Hay que ir al dashboard de Amazon, crear una lambda (O ir a la que ya esté crea
 
 
 ## Para actualizar la función
-make `deploy`
+Correr el comando `make deploy`
 
 ### TODO: Automatizar esto
 - Ir a la función de Lambda
