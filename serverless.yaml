@@ -1,0 +1,24 @@
+service: selenium-lambda
+
+provider:
+  name: aws
+  runtime: ruby2.7
+  timeout: 900
+
+functions:
+  main:
+    memorySize: 1000
+    handler: lambda_function.lambda_handler
+    events:
+      - http:
+          path: test
+          method: get
+
+    layers:
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Properties:
+        BinaryMediaTypes:
+          - "*/*"
